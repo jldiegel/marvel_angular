@@ -10,6 +10,7 @@ export class SearchComponent implements OnInit {
   charInput;
 
   @Output() searchButton = new EventEmitter<string>();
+  @Output() searchBlank = new EventEmitter<void>();
 
   constructor() { }
 
@@ -17,9 +18,14 @@ export class SearchComponent implements OnInit {
   }
 
   charSearch(){
-    this.searchButton.emit(this.charInput)
-    console.log(this.charInput)
-    this.charInput = ''
+    if(!this.charInput){
+      this.searchBlank.emit()
+    }
+    else{
+      this.searchButton.emit(this.charInput)
+      console.log(this.charInput)
+      this.charInput = ''
+    }
   }
  
 

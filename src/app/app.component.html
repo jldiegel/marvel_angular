@@ -7,13 +7,14 @@
 
   <br><br>
 
-  <app-search (searchButton)="catchInput($event)"></app-search>
+  <app-search (searchButton)="catchInput($event)" (searchBlank) = "getCharactersFromService()"></app-search>
 
   <br><br>
 
  <div *ngFor="let character of characterData">
    <li>{{character.name}}</li>
    <img src = "{{character.thumbnail.path}}/standard_fantastic.{{character.thumbnail.extension}}">
+   <br><br><br>
  </div>
 
 </div>
